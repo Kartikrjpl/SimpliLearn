@@ -10,7 +10,7 @@ interface Shape {
 }
 
 abstract class random_c implements Draw{
-	void d() {
+	public void d() {
 		System.out.println("abaahahahjh");
 	}
 }
