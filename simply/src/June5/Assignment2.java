@@ -13,7 +13,7 @@ class Mythread extends Thread{
 		for (int i=0;i<10;i++) {
 			System.out.println("Lerning Java");
 		}
-	}
+	}	
 }
 class YourThread extends Thread{
 	public void run() {
