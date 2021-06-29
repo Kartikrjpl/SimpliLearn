@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+	function Student(){
+		this.name = "John";
+		this.gender = "male";
+	}
+	
+	Student.prototype.age = 20;
+	
+	var obj1 = new Student();
+	var obj2 = new Student();
+	
+	document.write(obj2.age+ '<br>');
+	
+	Student.prototype = {age : 24};
+	document.write(obj2.age+ '<br>')
+	var obj3 = new Student();
+	document.write(obj3.age+ '<br>');
+	
+	
+	document.write(Student.prototype+ '<br>');
+
+	document.write(obj1.prototype+ '<br>');
+
+	document.write(obj1._proto_+ '<br>');
+
+	document.write(typeof Student.prototype+ '<br>');
+	document.write(typeof obj3._proto_+ '<br>');
+	document.write(Student.prototype == obj3._proto_+ '<br>');
+	
+	function Stud(){
+		this.name = "John";
+		this.gender = "M"; 
+	}
+	var obj = new Stud();
+	Stud.prototype.sayHi = function(){
+		alert("hi");
+	}
+	
+	var obj1 = new Stud();
+	var proto = Object.getPrototypeOf(obj1);
+	alert(proto.constructor);
+	alert(proto.sayHi);
+	
+	let animal = {
+			eats : true
+	};
+	
+	let rabbit = Object.create(animal);
+	
+	alert("created method of prototype "+rabbit.eats);
+	alert(Object.getPrototypeOf(rabbit)==animal);
+	document.writeln(Object.getPrototypeOf(rabbit)==animal);
+	
+	
+	
+	
+</script>
+</body>
+</html>

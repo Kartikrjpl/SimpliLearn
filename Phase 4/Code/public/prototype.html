@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	
+	function Employee (firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	Employee.prototype.fullName = function () {
+		return this.firstName + ' ' + this.lastName;
+	}
+	
+	var emp1 = new Employee('A', 'B');
+	var emp2 = new Employee('Kartik', 'Rajpal');
+	
+	document.write(emp1.fullName() + '<br>');
+	document.write(emp2.fullName() + '<br>');
+	
+	Employee.prototype.company = 'Ferrari';
+	
+	var emp1 = new Employee('AA', 'BB');
+	var emp2 = new Employee('First', 'Last');
+	
+	document.write(emp1.firstName + ' ' + emp1.lastName + ' ' + emp1.company + '<br>');
+	document.write(emp2.firstName + ' ' + emp2.lastName + ' ' + emp2.company + '<br>');
+	document.write(emp1.fullName() + ' ' + emp2.fullName());
+	
+</script>
+</body>
+</html>

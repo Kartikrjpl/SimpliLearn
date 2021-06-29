@@ -34,15 +34,17 @@ public class MainController {
         @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         public String fileUpload(@RequestParam("file") MultipartFile file) {
                 String result = "File was uploaded successfully";
-                
+                System.out.println("bakakakakakaka");
                 try {
-                 File convertFile = new File("/var/tmp/"+file.getOriginalFilename());
-              convertFile.createNewFile();
+                 File convertFile = new File("C:\\Users\\Kartik\\Downloads\\Test_Folder\\"+file.getOriginalFilename());
+              System.out.println("jajajajja");
+                 convertFile.createNewFile();
               FileOutputStream fout = new FileOutputStream(convertFile);
               fout.write(file.getBytes());
               fout.close();
               
                 } catch (IOException iex) {
+                	System.out.println("exceeept");
                         result = "Error " + iex.getMessage();
                         
                 } finally {
