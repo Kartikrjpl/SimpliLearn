@@ -1,0 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const title1 = React.createElement("h1", null, "Simplilearn");
+const title2 = React.createElement("h2", null, "Happy Learning!");
+
+ReactDOM.render([title1, title2], document.getElementById("root"));

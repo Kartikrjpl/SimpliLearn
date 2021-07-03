@@ -1,0 +1,114 @@
+link: https://www.freecodecamp.org/news/what-is-state-in-react-explained-with-examples/
+State change but withouht using the 'State' concept. it is changing state only due to recursive
+call to a function below:
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+const rootElement = document.getElementById("root");
+
+let counter = 0;
+
+const handleClick = () => {
+  counter++;
+  console.log("counter", counter);
+  renderContent();
+};
+
+const renderContent = () => {
+  const content = (
+    <div>
+      <button onClick={handleClick}>Increment counter</button>
+      <div>Counter value is {counter}</div>
+    </div>
+  );
+
+  ReactDOM.render(content, rootElement);
+};
+
+renderContent();
+
+
+
+Problem :: As you can see in the HTML structure, only the counter value is re-rendered as it's the only thing flashing in the HTML structure. This is the reason React is so fast and the virtual DOM makes React more useful.
+
+But still, it's not feasible to call the renderContent function every time we want to update the UI. So React added the concept of State.
+
+==================================================================================================
+Solution:
+Now here we are doing the state change using the concept of 'State' without calling the renderContent function every time we want to update the UI:
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      counter: 0
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+   handleClick() {
+    this.setState(
+      (prevState) => {
+        return {
+          counter: prevState.counter + 1
+        };
+      },
+      () => console.log("counter", this.state.counter)
+    );
+  }
+
+  render() {
+    const { counter } = this.state;
+
+    return (
+      <div>
+        <button onClick={this.handleClick}>Increment counter</button>
+        <div>Counter value is {counter}</div>
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Counter />, rootElement);
+
+
+===================================================================================================
+Example 2:
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+class User extends React.Component {
+  state = {
+    name: "Mike"
+  };
+
+  handleChange = (event) => {
+    const value = event.target.value;
+    this.setState({ name: value });
+  };
+
+  render() {
+    const { name } = this.state;
+
+    return (
+      <div>
+        <input
+          type="text"
+          onChange={this.handleChange}
+          placeholder="Enter your name"
+          value={name}
+        />
+        <div>Hello, {name}</div>
+      </div>
+    );
+  }
+}
+ReactDOM.render(<User />, document.querySelector("#root"));

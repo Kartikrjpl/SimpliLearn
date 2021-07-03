@@ -1,0 +1,22 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const title1 = React.createElement("h1", null, "Simplilearn");
+const title2 = React.createElement("h2", null, "Happy Learning!");
+
+let welcome = React.createElement("h3",{ style: { color: "red" } },`Welcome to react world`);
+
+ReactDOM.render([title1, title2, welcome], document.getElementById("root"));
+
+
+
+//------------------Example 2: Another way to call render dynamically----------------------//
+//-----using the property 'name' of the class Welcome-----//
+
+class Welcome extends React.Component {
+  render() {
+    return React.createElement("h1",{ style: { color: "red" } },`Welcome to ${this.props.name}`);
+  }
+}
+
+ReactDOM.render(React.createElement(Welcome, { name: "Home page" }, null),document.querySelector("#root"));

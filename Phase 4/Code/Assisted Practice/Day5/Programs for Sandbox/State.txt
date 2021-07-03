@@ -1,0 +1,100 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Hello extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      msg: "Hello, welcome to React Class."
+    };
+  }
+  render() {
+    return <h1>{this.state.msg}</h1>;
+  }
+}
+
+ReactDOM.render(<Hello />, document.querySelector("#root"));
+
+
+
+============================================================================================
+-----------------------------Example 2:---------------------------------------
+
+class MyComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "Maxx",
+      id: "101"
+    };
+  }
+
+  render() {
+    setTimeout(() => {
+      this.setState({ name: "Jaeha", id: "222" });
+    }, 2000);
+    return (
+      <div>
+        <h1>Hello {this.state.name}</h1>
+        <h2>Your Id is {this.state.id}</h2>
+      </div>
+    );
+  }
+}
+
+
+
+============================================================================================
+//---------------------------Example 3:-----------------------------------//
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      data: [
+        {
+          id: "111"
+        },
+
+        {
+          id: "222"
+        },
+
+        {
+          id: "333"
+        },
+        {
+          id: "444"
+        }
+      ]
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          {this.state.data.map((dynamicComponent, i) => (
+            <Content key={i} componentData={dynamicComponent} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+class Content extends React.Component {
+  render() {
+    return (
+      <div>
+        <div>{this.props.componentData.component}</div>
+
+        <div>{this.props.componentData.id}</div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+ 

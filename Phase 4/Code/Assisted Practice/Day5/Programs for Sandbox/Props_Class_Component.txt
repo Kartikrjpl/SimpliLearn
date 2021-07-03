@@ -1,0 +1,66 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Parent extends React.Component {
+  render() {
+    return (
+      <div>
+        <Child dataFromParent="Passing the data using props" />
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  render() {
+  
+  return (
+       <div>
+       <h1> We are learning :{this.props.dataFromParent}</h1>    </div>
+  );}}
+  export default Child
+  
+
+ReactDOM.render(<Parent />, document.querySelector("#root"));
+
+
+//--------------------------Example 2:------------------------------------//
+// ---------Flow of Data from Parent to Child: passing multiple parameters from Parent to Child--------------- //
+class Parent extends React.Component {
+    render() {
+        const variable = 5;
+        return (
+            <div>
+                <Child message="message for child" />
+                <Child message={variable} />
+            </div>
+        );
+    }
+}
+
+class Child extends React.Component {
+    render() {
+        return <h1>{this.props.message}</h1>
+    }
+}
+
+//----------------------Example 3:----------------------------------------//
+// ---------Flow of Data from Parent to Child--------------- //
+class Parent extends React.Component {
+  state = { data: "Hello World" };
+  render() {
+    return (
+      <div>
+        <Child2 dataFromParent={this.state.data} />
+      </div>
+    );
+  }
+}
+
+class Child2 extends React.Component {
+  render() {
+    return <div>The data from parent is:{this.props.dataFromParent}</div>;
+  }
+}
+
+//It is no compulsion to use the data to send as a state, simple vars or const variables could also be used to send data from Parent to Child

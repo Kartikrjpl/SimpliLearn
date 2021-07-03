@@ -1,0 +1,33 @@
+Day 1: Thursday
+1. React Element and Render Function
+2. Nesting of react elements/ child elements
+3. JSX
+4. Components
+5. Types - Function and Class Components
+
+Day 2: Friday
+1. Props
+2. Props with class components
+3. States
+4. State change
+5. PropTypes
+6. Lists
+7. Keys
+8. Maps
+9. Lifecycle of the component
+
+Day 3: Saturday
+1. event handling ---> with state change counter
+2. Conditional rendering
+
+(1) logical opearator --->   &&  and ||  ----> where we can show page on multiple true and false conditions
+(2) switch case  ----> to be used in those variaous i have to render my output multiple times on same page
+(3) if -else  ---> only for two outputs on the same page
+(4) nested if -else ----> to be used in those cases where we have multiple outputs but to be displayed based on multiple condtions
+(5) ternary operator --->  <condtion> ? true : false   ---> again two values comparison/ greater than/less than
+
+
+
+
+
+

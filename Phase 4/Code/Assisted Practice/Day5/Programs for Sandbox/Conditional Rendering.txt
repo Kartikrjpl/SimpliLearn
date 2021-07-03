@@ -1,0 +1,204 @@
+-----------------Example 1: Logical && Operator--------------------------//
+------------Problem : Find the length of the messages array-----------//
+
+function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+ReactDOM.render(
+  <Mailbox unreadMessages={messages} />,
+  document.getElementById('root')
+);
+
+
+=========================================================================
+------------------Example 2: Ternary Operator-------------------------
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      beverage: 22
+    };
+  }
+
+  render() {
+    return (
+      <div className="row">
+        {this.state.beverage === 21 ? <p> Beer </p> : <p> Coke </p>}
+      </div>
+    );
+  }
+}
+
+=========================================================================
+---------------------Example 3: if and else------------------------------
+
+class App extends React.Component {
+  colors = ["Red", "Pink", "Green", "Blue"];
+
+  render() {
+    if (!this.colors.length) {
+      return <span>Sorry, color list is empty.</span>;
+    } else {
+      return <div>{this.colors.map((item) => item + " ")}</div>;
+    }
+  }
+}
+
+
+=========================================================================
+------------------------Example 4: Switch Case---------------------------
+
+class App extends React.Component {
+  render() {
+    let today = new Date().getDay();
+
+    return (
+      <div>
+        {(() => {
+          switch (today) {
+            case 0:
+              return (today = "Sunday");
+            case 1:
+              return (today = "Monday");
+            case 2:
+              return (today = "Tuesday");
+            case 3:
+              return (today = "Wednesday");
+            case 4:
+              return (today = "Thursday");
+            case 5:
+              return (today = "Friday");
+            case 6:
+              return (today = "Saturday");
+            default:
+              console.log("default");
+          }
+        })()}
+      </div>
+    );
+  }
+}
+
+
+=================================================================================================================
+//----------------------------------------Example 5:--------------------------------------------//
+---------------------------Problem 2: Edit the text in the textfield and save it---------------------------------
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: '', inputText: '', mode:'view'};
+    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+  
+  handleChange(e) {
+    this.setState({ inputText: e.target.value });
+  }
+  
+  handleSave() {
+    this.setState({text: this.state.inputText, mode: 'view'});
+  }
+
+  handleEdit() {
+    this.setState({mode: 'edit'});
+  }
+  
+  render () {
+    if(this.state.mode === 'view') {
+      return (
+        <div>
+          <p>Text: {this.state.text}</p>
+          <button onClick={this.handleEdit}>
+            Edit
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>Text: {this.state.text}</p>
+            <input
+              onChange={this.handleChange}
+              value={this.state.inputText}
+            />
+          <button onClick={this.handleSave}>
+            Save
+          </button>
+        </div>
+      );
+    }
+  }
+}
+
+ReactDOM.render(
+    <App />,
+  document.getElementById('root')
+);
+
+=================================================================================================================
+--------------------------------------------Example 6:-----------------------------------------------------------
+-------------Case 1: Two buttons showing as "login" and "logout" and displays message on conditions-------------
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+function Message(props) {
+  if (props.isLoggedIn) return <h1>Welcome Back!!!</h1>;
+  else return <h1>Please Login First!!!</h1>;
+}
+// Login Component
+function Login(props) {
+  return <button onClick={props.clickInfo}> Login </button>;
+}
+// Logout Component
+function Logout(props) {
+  return <button onClick={props.clickInfo}> Logout </button>;
+}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.state = { isLoggedIn: false };
+  }
+  handleLogin() {
+    this.setState({ isLoggedIn: true });
+  }
+  handleLogout() {
+    this.setState({ isLoggedIn: false });
+  }
+  render() {
+    return (
+      <div>
+        <h1> Conditional Rendering Example </h1>
+        <Message isLoggedIn={this.state.isLoggedIn} />
+        {this.state.isLoggedIn ? (
+          <Logout clickInfo={this.handleLogout} />
+        ) : (
+          <Login clickInfo={this.handleLogin} />
+        )}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+
